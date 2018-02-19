@@ -8,16 +8,13 @@ package com.powsybl.iidm.tools;
 
 import com.google.auto.service.AutoService;
 import com.powsybl.commons.PowsyblException;
-import com.powsybl.tools.Command;
-import com.powsybl.tools.Tool;
-import com.powsybl.tools.ToolRunningContext;
-import com.powsybl.commons.datasource.DefaultDataSourceObserver;
-import com.powsybl.commons.datasource.DataSource;
 import com.powsybl.iidm.export.Exporter;
 import com.powsybl.iidm.export.Exporters;
 import com.powsybl.iidm.import_.ImportConfig;
 import com.powsybl.iidm.import_.Importers;
-import com.powsybl.iidm.network.Network;
+import com.powsybl.tools.Command;
+import com.powsybl.tools.Tool;
+import com.powsybl.tools.ToolRunningContext;
 import org.apache.commons.cli.CommandLine;
 import org.apache.commons.cli.Option;
 import org.apache.commons.cli.Options;
@@ -152,8 +149,13 @@ public class ConversionTool implements Tool {
         }
 
         Properties inputParams = readProperties(line, OptionType.IMPORT, context);
-        Network network = Importers.loadNetwork(context.getFileSystem().getPath(inputFile), context.getComputationManager(), createImportConfig(), inputParams);
+        // Network network = Importers.loadNetwork(context.getFileSystem().getPath(inputFile), context.getComputationManager(), createImportConfig(), inputParams);
 
+        for (int i = 0; i < 100; ++i) {
+            Importers.loadNetwork(context.getFileSystem().getPath(inputFile), context.getComputationManager(), createImportConfig(), inputParams);
+        }
+
+        /*
         Properties outputParams = readProperties(line, OptionType.EXPORT, context);
         DataSource ds2 = Exporters.createDataSource(context.getFileSystem().getPath(outputFile), new DefaultDataSourceObserver() {
             @Override
@@ -162,6 +164,7 @@ public class ConversionTool implements Tool {
             }
         });
         exporter.export(network, outputParams, ds2);
+        */
     }
 
     Properties readProperties(CommandLine line, OptionType optionType, ToolRunningContext context) throws IOException {

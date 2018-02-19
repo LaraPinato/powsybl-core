@@ -84,7 +84,7 @@ public class CurrentLimitsTest {
         assertFalse(l.isOverloaded());
         l.getTerminal1().getBusBreakerView().getBus().setV(390);
         l.getTerminal1().setP(100).setQ(50); // i = 165.51212
-        assertFalse(Float.isNaN(l.getTerminal1().getI()));
+        assertFalse(Double.isNaN(l.getTerminal1().getI()));
         assertFalse(l.isOverloaded());
         assertFalse(l.checkPermanentLimit1());
         assertNull(l.checkTemporaryLimits1());
@@ -143,7 +143,7 @@ public class CurrentLimitsTest {
         currentLimits.setPermanentLimit(1000f);
         assertEquals(1000f, currentLimits.getPermanentLimit(), 0.0f);
         assertEquals(3, currentLimits.getTemporaryLimits().size());
-        assertTrue(Float.isNaN(currentLimits.getTemporaryLimitValue(2)));
+        assertTrue(Double.isNaN(currentLimits.getTemporaryLimitValue(2)));
 
         CurrentLimits.TemporaryLimit temporaryLimit300 = currentLimits.getTemporaryLimit(300);
         assertEquals("5'", temporaryLimit300.getName());

@@ -55,6 +55,19 @@ public final class XmlUtil {
         }
     }
 
+    public static void writeDouble(String name, double value, XMLStreamWriter writer) throws XMLStreamException {
+        if (!Double.isNaN(value)) {
+            writer.writeAttribute(name, Double.toString(value));
+        }
+    }
+
+    public static void writeOptionalDouble(String name, double value, double absentValue, XMLStreamWriter writer) throws XMLStreamException {
+        if (!Double.isNaN(value) && value != absentValue) {
+            writer.writeAttribute(name, Double.toString(value));
+        }
+    }
+
+    /*
     public static void writeFloat(String name, float value, XMLStreamWriter writer) throws XMLStreamException {
         if (!Float.isNaN(value)) {
             writer.writeAttribute(name, Float.toString(value));
@@ -66,6 +79,7 @@ public final class XmlUtil {
             writer.writeAttribute(name, Float.toString(value));
         }
     }
+    */
 
     public static void writeInt(String name, int value, XMLStreamWriter writer) throws XMLStreamException {
         writer.writeAttribute(name, Integer.toString(value));
@@ -90,6 +104,19 @@ public final class XmlUtil {
         return attributeValue != null ? Boolean.valueOf(attributeValue) : defaultValue;
     }
 
+    public static double readDoubleAttribute(XMLStreamReader reader, String attributeName) {
+        return Double.valueOf(reader.getAttributeValue(null, attributeName));
+    }
+
+    public static double readOptionalDoubleAttribute(XMLStreamReader reader, String attributeName) {
+        return readOptionalDoubleAttribute(reader, attributeName, Double.NaN);
+    }
+
+    public static double readOptionalDoubleAttribute(XMLStreamReader reader, String attributeName, double defaultValue) {
+        String attributeValue = reader.getAttributeValue(null, attributeName);
+        return attributeValue != null ? Double.valueOf(attributeValue) : defaultValue;
+    }
+
     public static Integer readOptionalIntegerAttribute(XMLStreamReader reader, String attributeName) {
         String attributeValue = reader.getAttributeValue(null, attributeName);
         return attributeValue != null ? Integer.valueOf(attributeValue) : null;
@@ -100,6 +127,7 @@ public final class XmlUtil {
         return attributeValue != null ? Integer.parseInt(attributeValue) : defaultValue;
     }
 
+    /*
     public static float readFloatAttribute(XMLStreamReader reader, String attributeName) {
         return Float.valueOf(reader.getAttributeValue(null, attributeName));
     }
@@ -112,4 +140,5 @@ public final class XmlUtil {
         String attributeValue = reader.getAttributeValue(null, attributeName);
         return attributeValue != null ? Float.valueOf(attributeValue) : defaultValue;
     }
+    */
 }

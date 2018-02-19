@@ -19,7 +19,7 @@ import org.junit.Test;
 public class ReactiveCapabilityCurveImplTest {
 
     private ReactiveCapabilityCurveImpl createCurve(Point... points) {
-        TreeMap<Float, Point> map = new TreeMap<>();
+        TreeMap<Double, Point> map = new TreeMap<>();
         for (Point pt : points) {
             map.put(pt.getP(), pt);
         }

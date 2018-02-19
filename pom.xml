@@ -21,6 +21,7 @@
     <url>http://www.powsybl.com</url>
 
     <modules>
+        <!--
         <module>action</module>
         <module>afs</module>
         <module>ampl-converter</module>
@@ -41,6 +42,13 @@
         <module>simulation-api</module>
         <module>tools</module>
         <module>ucte</module>
+        -->
+        <module>commons</module>
+        <module>computation</module>
+        <module>computation-local</module>
+        <module>math</module>
+        <module>iidm</module>
+        <module>tools</module>
     </modules>
 
     <properties>

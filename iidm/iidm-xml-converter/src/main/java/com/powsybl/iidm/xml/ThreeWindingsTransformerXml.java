@@ -39,17 +39,17 @@ class ThreeWindingsTransformerXml extends AbstractTransformerXml<ThreeWindingsTr
 
     @Override
     protected void writeRootElementAttributes(ThreeWindingsTransformer twt, Substation s, NetworkXmlWriterContext context) throws XMLStreamException {
-        XmlUtil.writeFloat("r1", twt.getLeg1().getR(), context.getWriter());
-        XmlUtil.writeFloat("x1", twt.getLeg1().getX(), context.getWriter());
-        XmlUtil.writeFloat("g1", twt.getLeg1().getG(), context.getWriter());
-        XmlUtil.writeFloat("b1", twt.getLeg1().getB(), context.getWriter());
-        XmlUtil.writeFloat("ratedU1", twt.getLeg1().getRatedU(), context.getWriter());
-        XmlUtil.writeFloat("r2", twt.getLeg2().getR(), context.getWriter());
-        XmlUtil.writeFloat("x2", twt.getLeg2().getX(), context.getWriter());
-        XmlUtil.writeFloat("ratedU2", twt.getLeg2().getRatedU(), context.getWriter());
-        XmlUtil.writeFloat("r3", twt.getLeg3().getR(), context.getWriter());
-        XmlUtil.writeFloat("x3", twt.getLeg3().getX(), context.getWriter());
-        XmlUtil.writeFloat("ratedU3", twt.getLeg3().getRatedU(), context.getWriter());
+        XmlUtil.writeDouble("r1", twt.getLeg1().getR(), context.getWriter());
+        XmlUtil.writeDouble("x1", twt.getLeg1().getX(), context.getWriter());
+        XmlUtil.writeDouble("g1", twt.getLeg1().getG(), context.getWriter());
+        XmlUtil.writeDouble("b1", twt.getLeg1().getB(), context.getWriter());
+        XmlUtil.writeDouble("ratedU1", twt.getLeg1().getRatedU(), context.getWriter());
+        XmlUtil.writeDouble("r2", twt.getLeg2().getR(), context.getWriter());
+        XmlUtil.writeDouble("x2", twt.getLeg2().getX(), context.getWriter());
+        XmlUtil.writeDouble("ratedU2", twt.getLeg2().getRatedU(), context.getWriter());
+        XmlUtil.writeDouble("r3", twt.getLeg3().getR(), context.getWriter());
+        XmlUtil.writeDouble("x3", twt.getLeg3().getX(), context.getWriter());
+        XmlUtil.writeDouble("ratedU3", twt.getLeg3().getRatedU(), context.getWriter());
         writeNodeOrBus(1, twt.getLeg1().getTerminal(), context);
         writeNodeOrBus(2, twt.getLeg2().getTerminal(), context);
         writeNodeOrBus(3, twt.getLeg3().getTerminal(), context);

@@ -48,13 +48,13 @@ public class VscTest {
         assertEquals(405f, cs1.getVoltageSetpoint(), 0.0f);
         cs1.setVoltageSetpoint(406f);
         assertEquals(406f, cs1.getVoltageSetpoint(), 0.0f);
-        assertTrue(Float.isNaN(cs1.getReactivePowerSetpoint()));
+        assertTrue(Double.isNaN(cs1.getReactivePowerSetpoint()));
         assertEquals(0.011f, cs2.getLossFactor(), 0.0f);
         assertFalse(cs2.isVoltageRegulatorOn());
         assertEquals(123f, cs2.getReactivePowerSetpoint(), 0.0f);
         cs2.setReactivePowerSetpoint(124f);
         assertEquals(124f, cs2.getReactivePowerSetpoint(), 0.0f);
-        assertTrue(Float.isNaN(cs2.getVoltageSetpoint()));
+        assertTrue(Double.isNaN(cs2.getVoltageSetpoint()));
         cs2.setVoltageSetpoint(405f);
         cs2.setVoltageRegulatorOn(true);
         assertTrue(cs2.isVoltageRegulatorOn());
@@ -109,7 +109,7 @@ public class VscTest {
         stateManager.setWorkingState("s4");
         // check values cloned by extend
         assertTrue(cs1.isVoltageRegulatorOn());
-        assertTrue(Float.isNaN(cs1.getReactivePowerSetpoint()));
+        assertTrue(Double.isNaN(cs1.getReactivePowerSetpoint()));
         assertEquals(405f, cs1.getVoltageSetpoint(), 0.0f);
         // change values in s4
         cs1.setReactivePowerSetpoint(1.0f);
@@ -129,7 +129,7 @@ public class VscTest {
         // recheck initial state value
         stateManager.setWorkingState(StateManager.INITIAL_STATE_ID);
         assertTrue(cs1.isVoltageRegulatorOn());
-        assertTrue(Float.isNaN(cs1.getReactivePowerSetpoint()));
+        assertTrue(Double.isNaN(cs1.getReactivePowerSetpoint()));
         assertEquals(405f, cs1.getVoltageSetpoint(), 0.0f);
 
         // remove working state s4
